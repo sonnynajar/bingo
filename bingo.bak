@@ -6,48 +6,37 @@
   (list
    "Sonny wears a light-colored shirt"
    "Phil says 'bastard'"
-   "Judith mentions cats/nose whistles/thrift store (out loud)"
+   "Judith mentions foster cats"
    "Lindsey wears not-boots"
    "Stephen wears a not-plain-colored shirt"
    "Delivery person walks in"
    "Person selling/promoting something walks in"
    "Staff asks 'Is this coffee fresh?'"
    "Parent wants to move young advanced student to older class"
-   ;"Judith mentions nose whistles"
+   "Judith mentions nose whistles"
    "Customer needs help in Spanish"
    "Customer calls to cancel LTM subscription"
    "Person comes in to replace AC filters"
    "Jason gets a haircut"
-   "The AC is not working properly"
+   "The AC is not working"
    "Dead bug in the stairwell"
-   "The backend didn't work properly"
+   "The backend goes down"
    "Jordan lies about Lindsey's whereabouts on the phone"
    "Customer comes into our office"
    "Judith didn't have to find a sub all month"
    "Jordan wears a white shirt"
    "Sara has a different hair color"
-   "Sonny doesn't know where something is (can't 'hide' it, 2min to look)"
+   "Sonny doesn't know where something is"
    "Staff asks (email/out loud) 'Is X class going to run?'"
-   ;"Judith bribes with dinner at her house to go to a Del Mar school"
+   "Judith bribes with dinner at her house to go to a Del Mar school"
    "People 'talk' in sign language"
    "Staff wears a hat to the office (not Sonny)"
    "Get an email about a car parked in 2 spots"
    "Lindsey didn't remind us about kitchen cleanliness all month"
-   ;"Chromebook needs to be re-galliumed"
-   ;"Two people 'book' the conference room at the same time"
-   ;"Hillarious student allergies"
+   "Chromebook needs to be re-galliumed"
+   "Two people 'book' the conference room at the same time"
+   "Hillarious student allergies"
    "Elevator permit is renewed"
-   "Core staff is out sick (can't be you)"
-   "Sara talks about Lana"
-   "You can hear someone else's music (coming from ear/headphones)"
-   "You tried to get someone's attention, they're 'plugged-in', didn't hear you"
-   "Judith's daughters call her 2 days in a row (same or mix)"
-   "Discussion about how to get X thing to Y person using A person and B person"
-   "Not Jordan answers the phone"
-   "Phil shows up to the office without a bike"
-   "Someone calls asking for X core staff, X person accepts the call"
-   "Not Lindsey brings food to share with office"
-   "You're receiving a spam call, show someone else (make them believe you)"
    ))
 
 (define (wrap-pict-text string width s)
@@ -92,78 +81,9 @@
      200
      200
      #:border-width 2
-     #:border-color "orange")
+     #:border-color "green")
     (vc-append (text "DATE:________________")
                (blank 10)))))
-
-(define (horizontal-filled)
-  (hc-append
-   (filled-rectangle 8 8)
-   (filled-rectangle 8 8)
-   (filled-rectangle 8 8)
-   (filled-rectangle 8 8)
-   (filled-rectangle 8 8)))
-
-(define (horizontal-empty)
-  (hc-append
-   (rectangle 8 8)
-   (rectangle 8 8)
-   (rectangle 8 8)
-   (rectangle 8 8)
-   (rectangle 8 8)))
-
-(define (vertical-filled)
-  (vc-append
-   (filled-rectangle 8 8)
-   (filled-rectangle 8 8)
-   (filled-rectangle 8 8)
-   (filled-rectangle 8 8)
-   (filled-rectangle 8 8)))
-
-(define (vertical-empty)
-  (vc-append
-   (rectangle 8 8)
-   (rectangle 8 8)
-   (rectangle 8 8)
-   (rectangle 8 8)
-   (rectangle 8 8)))
-
-(define (row num)
-  (cond
-   ((= num 1)  
-    (vc-append
-     (horizontal-filled) (horizontal-empty) (horizontal-empty) (horizontal-empty) (horizontal-empty)))
-   ((= num 2)  
-    (vc-append
-     (horizontal-empty) (horizontal-filled) (horizontal-empty) (horizontal-empty) (horizontal-empty)))
-   ((= num 3)  
-    (vc-append
-     (horizontal-empty) (horizontal-empty) (horizontal-filled) (horizontal-empty) (horizontal-empty)))
-   ((= num 4)  
-    (vc-append
-     (horizontal-empty) (horizontal-empty) (horizontal-empty) (horizontal-filled) (horizontal-empty)))
-   ((= num 5)  
-    (vc-append
-     (horizontal-empty) (horizontal-empty) (horizontal-empty) (horizontal-empty) (horizontal-filled)))))
-
-(define (col num)
-  (cond
-   ((= num 1)  
-    (hc-append
-     (vertical-filled) (vertical-empty) (vertical-empty) (vertical-empty) (vertical-empty)))
-   ((= num 2)  
-    (hc-append
-     (vertical-empty) (vertical-filled) (vertical-empty) (vertical-empty) (vertical-empty)))
-   ((= num 3)  
-    (hc-append
-     (vertical-empty) (vertical-empty) (vertical-filled) (vertical-empty) (vertical-empty)))
-   ((= num 4)  
-    (hc-append
-     (vertical-empty) (vertical-empty) (vertical-empty) (vertical-filled) (vertical-empty)))
-   ((= num 5)  
-    (hc-append
-     (vertical-empty) (vertical-empty) (vertical-empty) (vertical-empty) (vertical-filled)))))
-   
 
 (define (arrow-pict)
   (vc-append
@@ -205,7 +125,7 @@
    (vc-append
     (scale (text "ThoughtSTEM Bingo") 4)
     (scale (text "Cross each square out when that 'action' happens.") 2)
-    (text "Board is valid from 10/01/2019 to 10/31/2019")
+    (text "Board is valid from 09/01/2019 to 9/30/2019")
     (blank 5)
     (hc-append 
      (vc-append
@@ -246,11 +166,15 @@
      (text "To 'prevent' cheating write in the date of when X happens.")
      (scale (text "You're allowed to do X (to cross it out) if and only if someone else is present to SEE it happen.") 1.5)
      (blank 10)
-     (text "Winning Pattern: Horizontal line + Vertical line")
+     (text "Winning Pattern: Arrow pointing in any direction")
      (hc-append
-      (row 1) (text "or") (row 2) (text "or") (row 3) (text "or") (row 4) (text "or") (row 5)
-      (text "AND")
-      (col 1) (text "or") (col 2) (text "or") (col 3) (text "or") (col 4) (text "or") (col 5))
+      (arrow-pict)
+      (blank 10)
+      (rotate (arrow-pict) (/ pi 2))
+      (blank 10)
+      (rotate (arrow-pict) pi)
+      (blank 10)
+      (rotate (arrow-pict) (/ (* pi 3) 2)))
      (blank 10)
      (text (~a "Card #" p))))))
 
@@ -263,4 +187,6 @@
 (make-grid #:v 6)
 (make-grid #:v 7)
 (make-grid #:v 8)
+(make-grid #:v 9)
+(make-grid #:v 10)
 
