@@ -203,7 +203,12 @@
 
   (pict->bitmap
    (vc-append
-    (scale (text "ThoughtSTEM Bingo") 4)
+    (hc-append
+     (jack-o-lantern 50)
+     (blank 5)
+     (scale (text "ThoughtSTEM Bingo") 4)
+     (blank 5)
+     (jack-o-lantern 50))
     (scale (text "Cross each square out when that 'action' happens.") 2)
     (text "Board is valid from 10/01/2019 to 10/31/2019")
     (blank 5)
