@@ -1,0 +1,35 @@
+#lang racket
+
+(require pict)
+(require racket/draw)
+
+(define eye
+  (cc-superimpose
+   (disk 20 #:color "white" #:border-color "black" #:border-width 3)
+   (disk 5 #:color "black" #:border-width 3)))
+
+(define nose
+  (dc (λ (dc dx dy)
+        (define old-brush (send dc get-brush))
+        (define old-pen (send dc get-pen))
+        (send dc set-brush
+              (new brush% [color "yellow"]))
+        (send dc set-pen
+              (new pen% [width 2] [color "orange"]))
+        (define path (new dc-path%))
+        (send path move-to 0 0)
+        (send path line-to 15 0)
+        (send path line-to 7.5 15)
+        (send path close)
+        (send dc draw-path path dx dy)
+        (send dc set-brush old-brush)
+        (send dc set-pen old-pen))
+      50 50))
+
+(cc-superimpose
+ (disk 80 #:color "brown" #:border-color "black" #:border-width 3)
+ (vc-append
+  (hc-append eye (blank 10) eye)
+  (blank 25)
+  #;(hc-append (blank 10) nose (blank 10))))
+
