@@ -1,6 +1,10 @@
 #lang racket
 
-(provide make-square
+(provide horizontal-filled
+         horizontal-empty
+         vertical-filled
+         vertical-empty
+         make-square
          free-squares
          two-plus-signs-touching
          two-plus-signs-not-touching
@@ -11,7 +15,9 @@
          two-exes-touching-4
          two-exes-sharing-1
          two-exes-sharing-2
-         two-exes-superimposed)
+         two-exes-superimposed
+         letter-y
+         letter-m)
 
 (require pict)
 
@@ -46,7 +52,7 @@
     [else (find-wrap-line string width (+ pointer 1) last s)])   ;Else recurssion
   )
 
-(define (make-square t)
+(define (make-square t c)
   (define s 1.5)
   (cc-superimpose
    (if (> (pict-width (scale (text t) s)) 200)
@@ -57,7 +63,7 @@
      200
      200
      #:border-width 2
-     #:border-color "cyan")
+     #:border-color c)
     (vc-append (text "DATE:________________")
                (blank 10))
     ;(vc-append (text "never expires")
@@ -68,35 +74,35 @@
   (pict->bitmap
    (hc-append 
     (vc-append
-     (make-square "FREE")
-     (make-square "FREE")
-     (make-square "FREE")
-     (make-square "FREE")
-     (make-square "FREE"))
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")
+     (make-square "FREE" "black"))
     (vc-append
-     (make-square "FREE")
-     (make-square "FREE")
-     (make-square "FREE")
-     (make-square "FREE")
-     (make-square "FREE"))
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")
+     (make-square "FREE" "black"))
     (vc-append
-     (make-square "FREE")
-     (make-square "FREE")
-     (make-square "FREE")
-     (make-square "FREE")
-     (make-square "FREE"))
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")
+     (make-square "FREE" "black"))
     (vc-append
-     (make-square "FREE")
-     (make-square "FREE")
-     (make-square "FREE")
-     (make-square "FREE")
-     (make-square "FREE"))
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")
+     (make-square "FREE" "black"))
     (vc-append
-     (make-square "FREE")
-     (make-square "FREE")
-     (make-square "FREE")
-     (make-square "FREE")
-     (make-square "FREE")))))
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")
+     (make-square "FREE" "black")))))
 
 (define (horizontal-filled)
   (hc-append
@@ -243,3 +249,19 @@
    (row-fill-pattern 1 0 1 0 0)
    (row-fill-pattern 0 1 0 1 0)
    (row-fill-pattern 0 0 0 0 0)))
+
+(define (letter-y)
+  (vc-append
+   (row-fill-pattern 1 0 0 0 1)
+   (row-fill-pattern 0 1 0 1 0)
+   (row-fill-pattern 0 0 1 0 0)
+   (row-fill-pattern 0 0 1 0 0)
+   (row-fill-pattern 0 0 1 0 0)))
+
+(define (letter-m)
+  (vc-append
+   (row-fill-pattern 1 0 0 0 1)
+   (row-fill-pattern 1 1 0 1 1)
+   (row-fill-pattern 1 0 1 0 1)
+   (row-fill-pattern 1 0 0 0 1)
+   (row-fill-pattern 1 0 0 0 1)))
